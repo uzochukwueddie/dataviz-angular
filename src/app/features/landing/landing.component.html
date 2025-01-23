@@ -1,0 +1,13 @@
+<div class="min-h-screen flex flex-col">
+  <app-landing-header (loginClick)="showLoginModal()" (signupClick)="showSignupModal()" />
+
+  <app-landing-hero (getStartedClick)="showSignupModal()" />
+
+  <app-landing-features />
+
+  <app-landing-testimonials />
+
+  <app-landing-cta (getStartedClick)="showSignupModal()" />
+
+  <app-landing-footer />
+</div>

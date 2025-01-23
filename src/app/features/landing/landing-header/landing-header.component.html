@@ -1,0 +1,49 @@
+<header class="bg-white shadow-sm">
+  <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <span class="text-2xl font-bold text-blue-600">DataViz</span>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden sm:flex sm:items-center sm:space-x-4">
+        <button (click)="loginClick.emit()"
+          class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+          Log in
+        </button>
+        <button (click)="signupClick.emit()"
+          class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium">
+          Sign up
+        </button>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex items-center sm:hidden">
+        <button (click)="toggleMobileMenu()"
+          class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+          <svg [class.hidden]="isMobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg [class.hidden]="!isMobileMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div [class.hidden]="!isMobileMenuOpen" class="sm:hidden">
+      <div class="pt-2 pb-3 space-y-1">
+        <button (click)="loginClick.emit()"
+          class="w-full text-left block text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">
+          Log in
+        </button>
+        <button (click)="signupClick.emit()"
+          class="w-full text-left block text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">
+          Sign up
+        </button>
+      </div>
+    </div>
+  </nav>
+</header>
