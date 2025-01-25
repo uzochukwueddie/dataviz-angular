@@ -1,2 +1,4 @@
 
-export interface IReduxState {}
+export interface IReduxState {
+  authUser: any;
+}
