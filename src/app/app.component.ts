@@ -1,16 +1,27 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterOutlet } from '@angular/router';
 import { ToastComponent } from './shared/components/toast.component';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     ToastComponent,
+    SidebarComponent,
     RouterOutlet
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'dataviz-angular';
+  router: Router = inject(Router);
+
+  get activeUrl(): string {
+    return this.router.url;
+  }
+
+  get isActive(): boolean {
+    const url = this.router.url;
+    return url.includes('/charts/create') || url.includes('/charts/edit');
+  }
 }

@@ -48,11 +48,11 @@ import { ToastService } from "../services/toast.service";
   animations: [
     trigger('slideIn', [
       transition(':enter', [
-        style({ transform: 'transformX(100%)', opacity: 0 }),
-        animate('300ms ease-out', style({ transform: 'transformX(0)', opacity: 1 }))
+        style({ transform: 'translateX(100%)', opacity: 0 }),
+        animate('300ms ease-out', style({ transform: 'translateX(0)', opacity: 1 }))
       ]),
       transition(':leave', [
-        animate('200ms ease-in', style({ transform: 'transformX(100%)', opacity: 0 }))
+        animate('200ms ease-in', style({ transform: 'translateX(100%)', opacity: 0 }))
       ]),
     ])
   ]

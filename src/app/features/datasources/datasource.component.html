@@ -1,0 +1,29 @@
+<div class="px-4 py-2">
+  <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">Data Sources</h1>
+      <p class="mt-1 text-sm text-gray-500">View and manage your datasources</p>
+    </div>
+
+    <div class="flex items-center gap-4 w-full sm:w-auto">
+      <button (click)="showAddModal()"
+        class="bg-blue-600 text-white px-4 py-1 gap-2 rounded-md hover:bg-blue-700 flex items-center">
+        <i class="fa fa-plus"></i>
+        Add Data Source
+      </button>
+    </div>
+  </div>
+
+  <app-datasources-list [dataSources]="dataSources" (edit)="showEditModal($event)"
+    (delete)="deleteDataSource($event)" />
+
+  @if (isAddModalOpen()) {
+  <app-add-datasource-modal (close)="hideAddModal()" (submit)="handleAdd()" />
+  }
+
+  @if (isEditModalOpen()) {
+  <app-edit-datasource-modal [projectId]="projectId()" (close)="hideEditModal()" (submit)="handleEdit()" />
+  }
+
+
+</div>

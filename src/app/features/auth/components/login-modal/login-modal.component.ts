@@ -11,6 +11,7 @@ import { LOGIN_USER } from '../../graphql/auth';
 import { addAuthUser } from '../../reducers/auth.reducer';
 import { getLocalStorageItem, setLocalStorageItem } from '../../../../shared/utils/utils';
 import { ToastService } from '../../../../shared/services/toast.service';
+import { addDataSource } from '../../../datasources/reducers/datasource.reducer';
 
 @Component({
   selector: 'app-login-modal',
@@ -64,7 +65,11 @@ export class LoginModalComponent implements OnDestroy {
           setLocalStorageItem('activeProject', JSON.stringify(projectIds[0]));
         }
         if (activeProject !== 'undefined' && activeProject !== null) {
-          // dispatch datasource
+          this.dispatch(addDataSource({
+            active: activeProject ? activeProject : projectIds[0],
+            database: activeProject ? activeProject.database : projectIds[0].database,
+            dataSource: projectIds
+          }));
         }
         this.router.navigate(['/dashboard']);
       },

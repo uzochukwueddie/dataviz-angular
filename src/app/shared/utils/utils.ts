@@ -15,3 +15,27 @@ export const getLocalStorageItem = (key: string) => {
 export const deleteLocalStorageItem = (key: string) => {
   window.localStorage.removeItem(key);
 };
+
+export const convertToBase64 = (inputObject: string): string => {
+  try {
+    return btoa(inputObject);
+  } catch (error: any) {
+    throw new Error(`Failed to decode base64 string: ${error.message}`);
+  }
+};
+
+export const decodeBase64Object = (base64: string): Record<string, unknown> => {
+  try {
+    return JSON.parse(atob(base64));
+  } catch (error: any) {
+    throw new Error(`Failed to decode base64 string: ${error.message}`);
+  }
+};
+
+export const decodeBase64String = (base64: string): string => {
+  try {
+    return atob(base64);
+  } catch (error: any) {
+    throw new Error(`Failed to decode base64 string: ${error.message}`);
+  }
+};

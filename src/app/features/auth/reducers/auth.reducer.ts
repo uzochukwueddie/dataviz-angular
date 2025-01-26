@@ -1,13 +1,14 @@
 import { createSlice, Slice } from '@reduxjs/toolkit';
 import { IReduxAddAuthUser } from '../interfaces/auth.interface';
+import { IUser } from '../../../shared/interfaces/user.interface';
 
-const initialValue: any = {};
+const initialValue: IUser = {} as IUser;
 
 const authSlice: Slice = createSlice({
   name: 'auth',
   initialState: initialValue,
   reducers: {
-    addAuthUser: (state: any, action: IReduxAddAuthUser): any => {
+    addAuthUser: (state: IUser, action: IReduxAddAuthUser): IUser => {
       const { authInfo } = action.payload;
       const newObj = {...authInfo};
       return {
@@ -15,7 +16,7 @@ const authSlice: Slice = createSlice({
         ...newObj
       };
     },
-    clearAuthUser: (): any => {
+    clearAuthUser: (): IUser => {
       return initialValue;
     }
   }

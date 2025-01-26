@@ -1,4 +1,7 @@
 <div class="w-screen flex overflow-hidden">
+  @if (!isActive && activeUrl !== '/') {
+  <app-sidebar />
+  }
 
   <div class="w-full">
     <router-outlet />

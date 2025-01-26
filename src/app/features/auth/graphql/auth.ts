@@ -45,7 +45,7 @@ export const LOGOUT_USER = gql`
 `;
 
 export const CHECK_CURRENT_USER = gql`
-  mutation CheckCurrentUser {
+  query CheckCurrentUser {
     checkCurrentUser {
       user {
         id
