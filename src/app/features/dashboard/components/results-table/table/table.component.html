@@ -1,0 +1,58 @@
+<div class="flex flex-col h-full overflow-hidden">
+  <div class="overflow-x-auto max-h-[calc(100vh-380px)]">
+    @if (data().length > 0 && queryResult.dataset.length > 0) {
+    <table class="w-full border-collapse border-l border-b border-r border-gray-200">
+      <thead class="sticky top-0 z-50 bg-gray-100">
+        <tr>
+          @for(column of queryResult.columns; track column.name) {
+          <th class="px-4 py-2 text-left truncate whitespace-nowrap border-r border-gray-200" [style.maxWidth.px]="150"
+            [title]="column.name">
+            {{ column.name }}
+          </th>
+          }
+          <th class="sticky right-0 z-30 w-12 px-4 py-2 text-center bg-gray-100 border-r border-gray-200">
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        @for(row of queryResult.dataset; track $index; let rowIndex = $index) {
+        <tr class="text-sm">
+          @for(cell of row; track $index; let cellIndex = $index) {
+          <td class="overflow-hidden px-4 py-2 truncate whitespace-nowrap border-r border-gray-200"
+            [style.maxWidth.px]="150" [title]="typeof cell === 'object' ? getObjectString(cell) : cell">
+            @if (typeof cell === "object" || typeof cell === "boolean") {
+            <div class="truncate">
+              <pre class="m-0 p-0 bg-transparent overflow-hidden whitespace-nowrap text-ellipsis"
+                [innerHTML]="getObjectString(cell)"></pre>
+            </div>
+            } @else {
+            <span [class]="getCellColor(cellIndex)">
+              {{ cell }}
+            </span>
+            }
+          </td>
+          }
+          <td class="sticky right-0 z-20 px-4 py-2 text-center bg-white border-r border-gray-200">
+            <button (click)="handleCopy(row, rowIndex)" class="text-gray-600 hover:text-blue-500 focus:outline-none"
+              title="Copy row as JSON">
+              @if(copiedRow === rowIndex) {
+              <i class="text-green-500 fa fa-check"></i>
+              } @else {
+              <i class="fa fa-copy"></i>
+              }
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+
+    @if (data().length === 0 && queryResult.dataset.length === 0) {
+    <div class="flex justify-center h-full w-full">
+      <span class="mt-10">No records to show</span>
+    </div>
+    }
+
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<aside class="h-screen bg-white border-l border-gray-200 w-64 flex-shrink-0 transition-all duration-300 ease-in-out">
+  <div class="px-4 py-2">
+    <div class="flex justify-between items-center">
+      <h3 class="text-lg font-semibold">Data Sources</h3>
+    </div>
+
+    <div class="mt-4">
+      <app-custom-dropdown [options]="dropdownOptions" dropdownMessage="No datasource" placehoder="Select datasource"
+        [defaultOption]="defaultSelectedProject()" (selectionChange)="onSelectionChange($event)"
+        (click)="onDropdownClicked()" />
+    </div>
+
+    <button (click)="showAddDataSourceModal()"
+      class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">
+      Add New Data Source
+    </button>
+
+    <div class="mt-6">
+      <h4 class="font-medium mb-2">Available Tables</h4>
+      <div class="space-y-2 overflow-y-auto h-[calc(100vh-300px)]">
+        @for(table of tables(); track table) {
+        <div class="p-2 hover:bg-gray-100 rounded cursor-pointer" (click)="onSelectTable(table)">
+          {{table}}
+        </div>
+        } @empty {
+        <div class="p-2 hover:bg-gray-100 rounded cursor-pointer">
+          No tables
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  @if (isAddDataSourceModalOpen()) {
+  <app-add-datasource-modal (close)="hideAddDataSourceModal()" (submit)="handleAdd()" />
+  }
+</aside>

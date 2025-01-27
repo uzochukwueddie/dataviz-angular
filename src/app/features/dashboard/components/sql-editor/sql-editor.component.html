@@ -1,0 +1,28 @@
+<div class="h-full flex flex-col">
+  <div class="bg-gray-100 pr-2 py-2 flex gap-4 justify-end items-center">
+    <button (click)="clearEditor()"
+      class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-md transition-colors">
+      Clear
+    </button>
+    <button (click)="executeQuery()" [disabled]="!isValidQuery"
+      class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
+      Run Query
+    </button>
+  </div>
+  <div class="w-full mx-auto">
+    <div class="bg-gray-800 p-4">
+      <div class="relative">
+        <textarea [formControl]="queryControl" (input)="onQueryChange()"
+          class="w-full bg-gray-900 text-white font-mono p-4 rounded-md resize-none focus:outline-none"
+          placeholder="Enter your SELECT query here...">
+        </textarea>
+
+        @if (validationMessage) {
+        <div [class]="validationMessageClasses">
+          {{ validationMessage }}
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

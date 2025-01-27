@@ -7,6 +7,7 @@ import { CHECK_CURRENT_USER } from "../../features/auth/graphql/auth";
 import { addAuthUser } from "../../features/auth/reducers/auth.reducer";
 import { getLocalStorageItem, setLocalStorageItem } from "../utils/utils";
 import { addDataSource } from "../../features/datasources/reducers/datasource.reducer";
+import { addCollections } from "../../features/dashboard/reducers/collections.reducer";
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +40,7 @@ export class AuthGuard implements CanActivate {
                           activeProject.database : projectIds.length > 0 ? projectIds[0].database : '',
         dataSource: projectIds
       }));
-      // dispatch collections
+      this.dispatch(addCollections(collections));
       return true;
     } catch (error) {
       this.router.navigate(['/']);

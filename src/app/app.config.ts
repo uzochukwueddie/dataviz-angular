@@ -4,6 +4,7 @@ import { provideApollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHighlightOptions } from 'ngx-highlightjs';
 
 import { routes } from './app.routes';
 import { provideRedux } from '@reduxjs/angular-redux';
@@ -29,6 +30,9 @@ export const appConfig: ApplicationConfig = {
       }
     }, {
       useMutationLoading: true
+    }),
+    provideHighlightOptions({
+      fullLibraryLoader: () => import('highlight.js')
     })
   ]
 };

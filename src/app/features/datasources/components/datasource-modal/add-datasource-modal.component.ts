@@ -10,6 +10,7 @@ import { IPostgreSQLDatasource } from "../../interfaces/datasource.interface";
 import { CHECK_POSTGRESQL_CONNECTION, CREATE_POSTGRESQL_DATASOURCE } from "../../graphql/datasource";
 import { convertToBase64, setLocalStorageItem } from "../../../../shared/utils/utils";
 import { addDataSource } from "../../reducers/datasource.reducer";
+import { clearDocuments } from "../../../dashboard/reducers/documents.reducer";
 
 @Component({
   selector: 'app-add-datasource-modal',
@@ -76,7 +77,7 @@ export class AddDataSourceModalComponent {
             dataSource
           }));
           this.datasourceSignalService.updateDatasources(dataSource);
-          // TODO: dispatch clearDocuments
+          this.dispatch(clearDocuments([]));
           this.toastService.show('PostreSQL datasource created successfully.', 'success');
         }
       },

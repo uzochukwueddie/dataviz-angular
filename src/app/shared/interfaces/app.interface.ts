@@ -129,16 +129,14 @@ export interface CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree
 }
 
-// export interface PaginationEvent {
-//   currentPage: number;
-//   startIndex: number;
-//   endIndex: number;
-//   data: Record<string, unknown>[];
-// }
-
 export interface IMenuItem {
   icon: string;
   class: string;
   label: string;
   route: string;
+}
+
+export interface ISQLPayload {
+  promptQuery: string;
+  sqlQuery: string;
 }

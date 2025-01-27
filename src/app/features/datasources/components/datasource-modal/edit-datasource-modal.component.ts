@@ -12,6 +12,7 @@ import { convertToBase64, getLocalStorageItem, setLocalStorageItem } from "../..
 import { addDataSource } from "../../reducers/datasource.reducer";
 import { IReduxState } from "../../../../store/store.interface";
 import { firstValueFrom } from "rxjs";
+import { clearDocuments } from "../../../dashboard/reducers/documents.reducer";
 
 @Component({
   selector: 'app-edit-datasource-modal',
@@ -98,7 +99,7 @@ export class EditDataSourceModalComponent implements OnInit {
             dataSource
           }));
           this.datasourceSignalService.updateDatasources(dataSource);
-          // TODO: dispatch clearDocuments
+          this.dispatch(clearDocuments([]));
           this.toastService.show('PostreSQL datasource updated successfully.', 'success');
         }
       },
