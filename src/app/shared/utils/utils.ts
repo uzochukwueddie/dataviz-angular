@@ -39,3 +39,10 @@ export const decodeBase64String = (base64: string): string => {
     throw new Error(`Failed to decode base64 string: ${error.message}`);
   }
 };
+
+export const truncateText = (text: string | number, maxLength: number): string => {
+  if (typeof text === 'number') return text.toString();
+  if (!text) return '';
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength - 3) + '...';
+}

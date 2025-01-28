@@ -2,12 +2,14 @@ import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { ToastComponent } from './shared/components/toast.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { IconSidebarComponent } from './shared/components/sidebar/icon-sidebar.component';
 
 @Component({
   selector: 'app-root',
   imports: [
     ToastComponent,
     SidebarComponent,
+    IconSidebarComponent,
     RouterOutlet
   ],
   templateUrl: './app.component.html',

@@ -1,0 +1,45 @@
+<div class="px-4 py-2 h-screen">
+  <div class="mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">My Charts</h1>
+      <p class="mt-1 text-sm text-gray-500">View and manage your saved charts</p>
+    </div>
+
+    <div class="flex items-center gap-4 w-full sm:w-auto">
+      <button (click)="createNewChart()"
+        class="bg-blue-600 text-white px-4 py-1 gap-2 rounded-md hover:bg-blue-700 flex items-center">
+        <i class="fa fa-plus"></i>
+        Create Chart
+      </button>
+    </div>
+  </div>
+
+  <div class="mb-6 flex flex-wrap gap-4">
+    <button *ngFor="let filter of filters" (click)="toggleFilter(filter)" [class.bg-blue-100]="activeFilter === filter"
+      [class.text-blue-800]="activeFilter === filter"
+      class="px-4 py-2 rounded-full border hover:bg-blue-100 focus:outline-none">
+      {{ filter }}
+    </button>
+  </div>
+
+  @if(filteredCharts().length > 0 && !isLoading()) {
+  <app-charts-grid [charts]="filteredCharts()" (deleteInfoChange)="deleteCreatedChart($event)" />
+  }
+
+  @if (filteredCharts().length === 0 && !isLoading()) {
+  <div class="mt-8 text-center">
+    <i class="fa fa-chart-column text-4xl"></i>
+    <h3 class="mt-2 text-sm font-medium text-gray-900">No charts found</h3>
+    <p class="mt-1 text-sm text-gray-500">
+      Get started by creating a new chart.
+    </p>
+    <div class="mt-2 flex items-center justify-center">
+      <button (click)="createNewChart()"
+        class="bg-blue-600 text-white px-4 py-2 gap-2 rounded-md hover:bg-blue-700 flex items-center">
+        <i class="fa fa-plus"></i>
+        Create New Chart
+      </button>
+    </div>
+  </div>
+  }
+</div>

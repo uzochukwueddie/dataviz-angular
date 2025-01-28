@@ -1,6 +1,8 @@
 <div class="w-screen flex overflow-hidden">
   @if (!isActive && activeUrl !== '/') {
   <app-sidebar />
+  } @else if (isActive && activeUrl !== '/') {
+  <app-icon-sidebar />
   }
 
   <div class="w-full">
