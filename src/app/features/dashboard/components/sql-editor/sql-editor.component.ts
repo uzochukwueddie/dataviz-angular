@@ -129,7 +129,6 @@ export class SqlEditorComponent implements OnInit {
       const { executePostgreSQLQuery } = data as any;
       const { documents } = executePostgreSQLQuery;
       this.queryResult.emit(documents);
-      const filteredDocuments = JSON.parse(documents).filter((obj: Record<string, unknown>) => Object.keys(obj).length > 0);
     } catch (error) {
       this.toastService.show('Failed to return result', 'error');
     } finally {

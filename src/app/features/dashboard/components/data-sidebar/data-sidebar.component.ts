@@ -14,6 +14,7 @@ import { addDataSource } from '../../../datasources/reducers/datasource.reducer'
 import { addCollections } from '../../reducers/collections.reducer';
 import { addDocuments, clearDocuments } from '../../reducers/documents.reducer';
 import { AddDataSourceModalComponent } from '../../../datasources/components/datasource-modal/add-datasource-modal.component';
+import { addSQLQuery } from '../../reducers/sql.reducer';
 
 const DEFAULT_PROJECT: IDatasource = {
   id: '',
@@ -82,6 +83,7 @@ export class DataSidebarComponent {
 
   onSelectTable(table: string): void {
     const sql = `SELECT * FROM ${table} LIMIT 20`;
+    this.dispatch(addSQLQuery(sql));
     this.getTableData(`${this.rootDatasource().active?.projectId}`, sql);
   }
 

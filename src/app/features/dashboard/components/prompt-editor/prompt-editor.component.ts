@@ -90,7 +90,7 @@ export class PromptEditorComponent {
       const { sql } = JSON.parse(getSQLQueryData);
       const sqlData = sql.replace(/\n/g, ' ');
       this.sqlQuery.set(sqlData.replace(/\s+/g, ' '));
-      this.dispatch(addPromptSQLQuery(sqlData));
+      this.dispatch(addPromptSQLQuery(sqlData.replace(/\s+/g, ' ')));
     } catch (error) {
       this.toastService.show('Failed to return result', 'error');
     } finally {
