@@ -1,6 +1,4 @@
 import { Component, computed, effect, input, InputSignal, signal } from '@angular/core';
-import { injectAppSelector } from '../../../../store';
-import { IReduxState } from '../../../../store/store.interface';
 import { CommonModule } from '@angular/common';
 import { PaginationComponent } from './pagination.component';
 import { TableComponent } from './table/table.component';
@@ -12,8 +10,6 @@ import { TableComponent } from './table/table.component';
   styleUrl: './results-table.component.scss'
 })
 export class ResultsTableComponent {
-  datasource = injectAppSelector((state: IReduxState) => state.datasource);
-
   tableDataSignal = signal<Record<string, unknown>[]>([]);
   currentPage = signal<number>(1);
   itemsPerPage = 20;
