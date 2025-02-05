@@ -33,7 +33,7 @@ import { addPromptSQLQuery, clearPromptSQLQuery } from "../../reducers/sql.reduc
         [(ngModel)]="prompt"
         name="promptText"
         placeholder="Show me all users who signed up in the last month"
-        class="w-full p-4 focus:outline-none resize-none"></textarea>
+        class="w-full h-30 p-4 focus:outline-none resize-none"></textarea>
       <div class="border rounded-t-lg bg-white py-2">
           <div class="flex items-center justify-between mb-2s px-3">
               <h3 class="font-medium">Generated SQL</h3>
