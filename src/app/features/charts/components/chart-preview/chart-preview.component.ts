@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, effect, ElementRef, HostListener, inject, input, output, signal } from '@angular/core';
+import { Component, effect, input, output, signal } from '@angular/core';
 import { HighlightModule } from 'ngx-highlightjs';
 import { IChartInfo, IChartResult } from '../../interfaces/chart.interface';
 import { NumberDisplayComponent } from '../charts/number.component';
@@ -20,7 +20,6 @@ import { PieChartComponent } from '../charts/pie.component';
   templateUrl: './chart-preview.component.html'
 })
 export class ChartPreviewComponent {
-  elementRef: ElementRef = inject(ElementRef);
   sqlQuery = input<string>('');
   chartConfig = input<IChartResult | null>(null);
   isLoading = input<boolean>(false);
