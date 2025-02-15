@@ -18,9 +18,9 @@ import { clearDocuments } from "../../../dashboard/reducers/documents.reducer";
   template: `
     <app-modal [isOpen]="isOpen()">
       <div class="w-full md:w-[600px] md:max-w-2xl">
-        <div class="flex items-center justify-between p-4 border-b">
+        <div class="flex items-center justify-between p-4 border-gray-100 border-b-1">
           <h2 class="text-xl font-semibold">New PostgreSQL Connection</h2>
-          <button (click)="closeModal()" class="text-gray-500 hover:text-gray-700" aria-label="Close modal">
+          <button (click)="closeModal()" class="text-gray-500 cursor-pointer hover:text-gray-700" aria-label="Close modal">
             <i class="fa fa-xmark"></i>
           </button>
         </div>

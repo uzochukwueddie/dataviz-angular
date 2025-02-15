@@ -7,7 +7,7 @@ import { DatasourceSignalService } from "../../../../shared/services/datasource.
 import { ToastService } from "../../../../shared/services/toast.service";
 import { injectAppDispatch, injectAppSelector } from "../../../../store";
 import { IDatasource, IPostgreSQLDatasource } from "../../interfaces/datasource.interface";
-import { CHECK_POSTGRESQL_CONNECTION, CREATE_POSTGRESQL_DATASOURCE, EDIT_DATASOURCE, GET_SINGLE_DATA_SOURCE } from "../../graphql/datasource";
+import { CHECK_POSTGRESQL_CONNECTION, EDIT_DATASOURCE, GET_SINGLE_DATA_SOURCE } from "../../graphql/datasource";
 import { convertToBase64, getLocalStorageItem, setLocalStorageItem } from "../../../../shared/utils/utils";
 import { addDataSource } from "../../reducers/datasource.reducer";
 import { IReduxState } from "../../../../store/store.interface";
@@ -20,9 +20,9 @@ import { clearDocuments } from "../../../dashboard/reducers/documents.reducer";
   template: `
     <app-modal [isOpen]="true" (close)="closeModal()">
       <div class="w-full md:w-[600px] md:max-w-2xl">
-        <div class="flex items-center justify-between p-4 border-b">
+        <div class="flex items-center justify-between p-4 border-gray-100 border-b-1">
           <h2 class="text-xl font-semibold">Edit PostgreSQL Connection</h2>
-          <button (click)="closeModal()" class="text-gray-500 hover:text-gray-700" aria-label="Close modal">
+          <button (click)="closeModal()" class="text-gray-500 cursor-pointer hover:text-gray-700" aria-label="Close modal">
             <i class="fa fa-xmark"></i>
           </button>
         </div>

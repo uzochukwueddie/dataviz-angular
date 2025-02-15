@@ -17,7 +17,7 @@
       <button *ngFor="let type of chartTypes" (click)="selectChartType(type)"
         [class.bg-blue-50]="config().chartType === type.name" [class.border-blue-500]="config().chartType === type.name"
         [class.text-blue-700]="config().chartType === type.name"
-        class="flex flex-col items-center p-3 text-sm cursor-pointer border rounded-lg hover:bg-gray-50">
+        class="flex flex-col items-center p-3 text-sm cursor-pointer border border-gray-200 rounded-lg hover:bg-gray-50">
         <i class="{{ type.icon }}"></i>
         {{ type.name | uppercase }}
       </button>
