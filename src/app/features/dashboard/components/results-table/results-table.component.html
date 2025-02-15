@@ -1,9 +1,11 @@
 <div class="flex flex-col relative">
-  <div class=" bg-gray-100 border-b py-2 flex justify-between items-center">
+  <div class=" bg-gray-100 border-gray-200 border-b py-2 flex justify-between items-center">
     <h3 class="font-semibold px-4 w-full">Query Results</h3>
     @if (tableData().length) {
-    <app-pagination [currentPage]="currentPage()" [totalPages]="totalPages()"
-      (currentPageDataChange)="onCurrentPageData($event)" />
+    <div class="flex items-end">
+      <app-pagination [currentPage]="currentPage()" [totalPages]="totalPages()"
+        (currentPageDataChange)="onCurrentPageData($event)" />
+    </div>
     }
   </div>
 

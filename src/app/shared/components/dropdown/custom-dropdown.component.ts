@@ -12,11 +12,11 @@ export interface DropdownOption {
   template: `
     <div class="inherit w-full relative">
       <button
-          class="w-full px-4 py-2 bg-white border border-gray-300 rounded-md text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none"
+          class="w-full px-4 py-2 cursor-pointer bg-white border border-gray-300 rounded-md text-left flex justify-between items-center hover:bg-gray-50 focus:outline-none"
           [attr.aria-expanded]="isOpen()"
           (click)="toggleDropdown()"
         >
-          <span class="text-gray-700">{{ selectedOption()?.label || placeholder() }}</span>
+          <span class="text-gray-700 truncate overflow-hidden whitespace-nowrap w-[90%]">{{ selectedOption()?.label || placeholder() }}</span>
           <span class="text-sm text-gray-500 transition-transform duration-200"
               [class.transform]="isOpen()"
               [class.rotate-180]="isOpen()"

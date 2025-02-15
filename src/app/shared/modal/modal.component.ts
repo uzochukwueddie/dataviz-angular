@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
       role="dialog"
       aria-modal="true">
       <div
-        class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+        class="fixed inset-0 bg-black/50 bg-opacity-50 transition-opacity"
         (click)="close.emit()">
       </div>
 

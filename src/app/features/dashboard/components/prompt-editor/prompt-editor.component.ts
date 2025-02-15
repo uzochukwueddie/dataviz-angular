@@ -18,13 +18,13 @@ import { addPromptSQLQuery, clearPromptSQLQuery } from "../../reducers/sql.reduc
     <div class="h-full flex flex-col">
       <div class="bg-gray-100 px-4 py-2 flex gap-4 justify-end items-center">
         <button (click)="clearEditor()"
-          class="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-md transition-colors">
+          class="px-4 py-2 cursor-pointer bg-gray-600 hover:bg-gray-700 text-white rounded-md transition-colors">
           Clear
         </button>
         <button
             [disabled]="!prompt()"
             (click)="handleSubmit()"
-            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
+            class="bg-blue-600 cursor-pointer text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed">
             Run Query
         </button>
       </div>
@@ -34,10 +34,10 @@ import { addPromptSQLQuery, clearPromptSQLQuery } from "../../reducers/sql.reduc
         name="promptText"
         placeholder="Show me all users who signed up in the last month"
         class="w-full h-30 p-4 focus:outline-none resize-none"></textarea>
-      <div class="border rounded-t-lg bg-white py-2">
+      <div class="border border-gray-200 rounded-t-lg bg-white py-2">
           <div class="flex items-center justify-between mb-2s px-3">
               <h3 class="font-medium">Generated SQL</h3>
-              <button (click)="copySqlToClipboard()" class="text-sm text-blue-600 hover:text-blue-700 flex items-center gap-1">
+              <button (click)="copySqlToClipboard()" class="text-sm cursor-pointer text-blue-600 hover:text-blue-700 flex items-center gap-1">
                   <i class="fa fa-copy"></i>
                   Copy
               </button>

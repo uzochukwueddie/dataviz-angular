@@ -7,7 +7,7 @@ import { IChartDataView } from '../../interfaces/chart.interface';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div class="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div class="bg-white rounded-2xl shadow-xl w-full h-[75%] max-w-2xl">
         <div class="flex justify-between items-center p-6">
           <div>
@@ -16,7 +16,7 @@ import { IChartDataView } from '../../interfaces/chart.interface';
             <p class="text-sm font-bold mb-2">{{ chartData().title }}</p>
             }
           </div>
-          <button (click)="onClose.emit()" class="text-gray-400 hover:text-gray-600">
+          <button (click)="onClose.emit()" class="text-gray-400 cursor-pointer hover:text-gray-600">
             <i class="fa fa-xmark"></i>
           </button>
         </div>
