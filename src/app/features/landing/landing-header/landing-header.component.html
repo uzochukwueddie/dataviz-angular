@@ -7,11 +7,11 @@
 
       <div class="hidden sm:flex sm:items-center sm:space-x-4">
         <button (click)="loginClick.emit()"
-          class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
+          class="text-gray-700 cursor-pointer hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
           Log in
         </button>
         <button (click)="signupClick.emit()"
-          class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium">
+          class="bg-blue-600 cursor-pointer text-white hover:bg-blue-700 px-4 py-2 rounded-md text-sm font-medium">
           Sign up
         </button>
       </div>
@@ -33,11 +33,11 @@
     <div [class.hidden]="!isMobileMenuOpen" class="sm:hidden">
       <div class="pt-2 pb-3 space-y-1">
         <button (click)="loginClick.emit()"
-          class="w-full text-left block text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">
+          class="w-full cursor-pointer text-left block text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">
           Log in
         </button>
         <button (click)="signupClick.emit()"
-          class="w-full text-left block text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">
+          class="w-full cursor-pointer text-left block text-gray-700 hover:text-gray-900 hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium">
           Sign up
         </button>
       </div>
