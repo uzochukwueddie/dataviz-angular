@@ -46,24 +46,12 @@ export class AppComponent {
       deleteLocalStorageItem('activeProject');
     });
 
-    fromEvent(window, 'visibilitychange').subscribe(() => {
-      if (document.visibilityState === 'hidden') {
-        deleteLocalStorageItem('activeProject');
-      }
-    });
-
     // window.addEventListener('beforeunload', () => {
     //   deleteLocalStorageItem('activeProject');
     // });
 
     // window.addEventListener('unload', () => {
     //   deleteLocalStorageItem('activeProject');
-    // });
-
-    // window.addEventListener('visibilitychange', () => {
-    //   if (document.visibilityState === 'hidden') {
-    //     deleteLocalStorageItem('activeProject');
-    //   }
     // });
   }
 }
