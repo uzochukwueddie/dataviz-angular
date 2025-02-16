@@ -33,7 +33,8 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-[calc(100%-80px)]">
         <div class="lg:col-span-4">
           <app-chart-configuration [dropdownOptions]="dropdownOptions()" [chartInfo]="chartInfo()"
-            [datasources]="rootDatasource()" (configChange)="onConfigChange($event)" />
+            [datasources]="rootDatasource()" (configChange)="onConfigChange($event)" [chartConfig]="chartResult()"
+            [chartConfigData]="originalChartData()" (chartChange)="onChartChange($event)" />
         </div>
         <div class="lg:col-span-8">
           <app-chart-preview [chartConfig]="chartResult()" [sqlQuery]="sqlQuery()"

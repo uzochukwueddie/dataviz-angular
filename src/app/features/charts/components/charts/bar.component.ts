@@ -8,7 +8,9 @@ Chart.register(...registerables);
 @Component({
   selector: 'app-bar-chart',
   template: `
-    <canvas #chartCanvas class="min-w-[900px] min-h-[550px]"></canvas>
+    <div class="min-h-[550px] relative" [style.width.vw]="previewWidthComputed()">
+      <canvas #chartCanvas></canvas>
+    </div>
   `
 })
 export class BarChartComponent {
@@ -17,7 +19,9 @@ export class BarChartComponent {
   chart: Chart | null = null;
 
   chartData = input<IChartResult | null>(null);
+  previewWidth = input<number>(0);
   chartDataComputed = computed(() => this.chartData());
+  previewWidthComputed = computed(() => this.previewWidth());
 
   constructor() {
     effect(() => {

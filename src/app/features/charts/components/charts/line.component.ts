@@ -10,7 +10,9 @@ Chart.register(...registerables);
   selector: 'app-line-chart',
   standalone: true,
   template: `
-    <canvas #chartCanvas class="min-w-[900px] min-h-[550px]"></canvas>
+    <div class="min-h-[550px] relative" [style.width.vw]="previewWidthComputed()">
+      <canvas #chartCanvas></canvas>
+    </div>
   `
 })
 export class LineChartComponent {
@@ -18,7 +20,9 @@ export class LineChartComponent {
   chart: Chart | null = null;
 
   chartData = input<IChartResult | null>(null);
-  chartDataComputed: Signal<IChartResult | null> = computed(() => this.chartData());
+  previewWidth = input<number>(0);
+  chartDataComputed = computed(() => this.chartData());
+  previewWidthComputed = computed(() => this.previewWidth());
 
   constructor() {
     effect(() => {

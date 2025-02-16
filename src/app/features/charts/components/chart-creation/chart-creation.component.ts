@@ -39,6 +39,7 @@ export class ChartCreationComponent {
   chartInfoId = signal('');
   prompt = signal('');
   queryData = signal([]);
+  originalChartData = signal<IChartResult | null>(null);
   isEditPage = signal(false);
 
   constructor() {
@@ -61,6 +62,17 @@ export class ChartCreationComponent {
   onConfigChange(config: IChartConfiguration): void {
     this.prompt.set(config.userPrompt);
     this.getAIChartData(config);
+  }
+
+  onChartChange(chart: IChartResult): void {
+    if (this.originalChartData()?.type !== 'number' && chart.type === 'number') {
+      this.chartResult.set(chart);
+    } else {
+      this.chartResult.set({
+        ...this.originalChartData()!,
+        type: chart.type
+      });
+    }
   }
 
   saveChart(event: IChartInfo): void {
@@ -115,10 +127,12 @@ export class ChartCreationComponent {
       const { generateChart } = data as any;
       const { promptResult, sql, queryResult } = JSON.parse(generateChart);
       const resultString = promptResult.input.chart;
-      this.chartResult.set({
+      const obj = {
         ...resultString,
         type: promptResult.input.chartType
-      });
+      };
+      this.chartResult.set(obj);
+      this.originalChartData.set(obj);
       const sqlData = sql.replace(/\n/g, ' ');
       this.sqlQuery.set(sqlData.replace(/\s+/g, ' '));
       this.queryData.set(queryResult);
@@ -150,15 +164,16 @@ export class ChartCreationComponent {
       this.sqlQuery.set(sql);
       this.prompt.set(prompt);
       this.queryData.set(JSON.parse(queryData));
-      this.chartResult.set({
+      const info = {
         xAxis,
         yAxis,
         title: chartName,
         type: chartType,
         data: JSON.parse(chartData)
-      });
+      };
+      this.chartResult.set(info);
+      this.originalChartData.set(info);
     } catch (error) {
-      console.log(error)
       this.toastService.show('Failed to chart data.', 'error');
     }
   }
